@@ -76,7 +76,7 @@ const Main = () => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true)
     setShowResult(false)
