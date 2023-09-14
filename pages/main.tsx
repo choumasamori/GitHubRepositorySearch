@@ -62,11 +62,11 @@ const Main = () => {
   const [showResult, setShowResult] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setIsLoading(true)
     setShowResult(false)
