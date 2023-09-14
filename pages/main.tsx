@@ -15,6 +15,16 @@ interface User {
   repos: Repo[];
 }
 
+interface UserResponse {
+  login: string;
+}
+
+interface RepoResponse {
+  name: string;
+  description: string;
+  stargazers_count: number;
+}
+
 // User Component
 const User = ({ user }: { user: User }) => {
   const [showRepos, setShowRepos] = useState(false);
@@ -76,11 +86,11 @@ const Main = () => {
       const data = await response.json();
   
       const users: User[] = await Promise.all(
-        data.items.map(async (r) => {
+        data.items.map(async (r: UserResponse) => {
           const reposResponse = await fetch(`https://api.github.com/users/${r.login}/repos?per_page=100`);
           const reposData = await reposResponse.json();
   
-          const repos: Repo[] = reposData.map((d) => ({
+          const repos: Repo[] = reposData.map((d: RepoResponse) => ({
             repo_name: d.name,
             desc: d.description,
             stars: d.stargazers_count
